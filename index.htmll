@@ -1,0 +1,2695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vini's Secret Chaos 🎀🖤</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Dancing+Script:wght@500;600;700&family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    overflow:hidden;
+    font-family:'Fredoka',sans-serif;
+    color:white;
+    background:#050207;
+}
+
+
+/* =========================================================
+   COLOR SYSTEM
+========================================================= */
+
+:root{
+    --black:#050207;
+    --black2:#10070d;
+
+    --burgundy:#5c0020;
+    --burgundy2:#80002f;
+    --burgundy3:#a40043;
+
+    --pink:#ff4fa3;
+    --hotpink:#ff1687;
+
+    --purple:#9c5cff;
+    --violet:#6d35d9;
+
+    --cyan:#54e8ff;
+    --blue:#4f8cff;
+
+    --yellow:#ffe66d;
+    --orange:#ff9b54;
+
+    --mint:#74ffd3;
+
+    --white:#fff8fc;
+}
+
+
+/* =========================================================
+   ANIMATED BACKGROUND
+========================================================= */
+
+.background{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    overflow:hidden;
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(255,22,135,.18),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 90% 15%,
+            rgba(84,232,255,.13),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(156,92,255,.18),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #030105,
+            #17040d,
+            #050207,
+            #180611,
+            #030105
+        );
+
+    background-size:
+        auto,
+        auto,
+        auto,
+        400% 400%;
+
+    animation:backgroundMove 15s ease infinite;
+}
+
+@keyframes backgroundMove{
+    0%{background-position:0 0,0 0,0 0,0% 50%;}
+    50%{background-position:0 0,0 0,0 0,100% 50%;}
+    100%{background-position:0 0,0 0,0 0,0% 50%;}
+}
+
+
+/* =========================================================
+   COLOR BLOBS
+========================================================= */
+
+.blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(60px);
+    opacity:.18;
+    animation:blobMove 12s infinite alternate ease-in-out;
+}
+
+.blob.one{
+    width:300px;
+    height:300px;
+    background:var(--pink);
+    left:-100px;
+    top:10%;
+}
+
+.blob.two{
+    width:350px;
+    height:350px;
+    background:var(--purple);
+    right:-130px;
+    bottom:5%;
+    animation-delay:2s;
+}
+
+.blob.three{
+    width:220px;
+    height:220px;
+    background:var(--cyan);
+    left:45%;
+    top:-100px;
+    animation-delay:4s;
+}
+
+@keyframes blobMove{
+    from{
+        transform:translate(0,0) scale(1);
+    }
+    to{
+        transform:translate(80px,50px) scale(1.3);
+    }
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+#particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:2;
+}
+
+.particle{
+    position:absolute;
+    bottom:-20px;
+    animation:particleUp linear infinite;
+    opacity:0;
+}
+
+@keyframes particleUp{
+
+    0%{
+        transform:
+            translateY(0)
+            translateX(0)
+            rotate(0)
+            scale(.4);
+        opacity:0;
+    }
+
+    15%{
+        opacity:.9;
+    }
+
+    50%{
+        transform:
+            translateY(-50vh)
+            translateX(40px)
+            rotate(180deg)
+            scale(1);
+    }
+
+    100%{
+        transform:
+            translateY(-115vh)
+            translateX(-50px)
+            rotate(360deg)
+            scale(.5);
+        opacity:0;
+    }
+}
+
+
+/* =========================================================
+   STICKERS
+========================================================= */
+
+.sticker{
+    position:fixed;
+    z-index:3;
+    pointer-events:none;
+    user-select:none;
+    animation:stickerFloat 4s infinite ease-in-out;
+    filter:
+        drop-shadow(0 5px 10px rgba(0,0,0,.45));
+}
+
+.sticker.s1{
+    left:3%;
+    top:12%;
+    font-size:45px;
+}
+
+.sticker.s2{
+    right:4%;
+    top:15%;
+    font-size:40px;
+    animation-delay:1s;
+}
+
+.sticker.s3{
+    left:5%;
+    bottom:12%;
+    font-size:42px;
+    animation-delay:2s;
+}
+
+.sticker.s4{
+    right:5%;
+    bottom:15%;
+    font-size:45px;
+    animation-delay:3s;
+}
+
+.sticker.s5{
+    left:18%;
+    top:5%;
+    font-size:25px;
+    animation-delay:.5s;
+}
+
+.sticker.s6{
+    right:20%;
+    bottom:5%;
+    font-size:27px;
+    animation-delay:1.5s;
+}
+
+@keyframes stickerFloat{
+    0%,100%{
+        transform:translateY(0) rotate(-8deg);
+    }
+
+    50%{
+        transform:translateY(-22px) rotate(8deg);
+    }
+}
+
+
+/* =========================================================
+   MAIN FRAME
+========================================================= */
+
+.frame{
+    position:fixed;
+    inset:10px;
+    z-index:10;
+    pointer-events:none;
+
+    border:2px solid rgba(255,79,163,.35);
+
+    box-shadow:
+        inset 0 0 30px rgba(128,0,47,.25),
+        0 0 25px rgba(255,22,135,.12);
+}
+
+.frame:before,
+.frame:after{
+    content:"";
+    position:absolute;
+    width:70px;
+    height:70px;
+}
+
+.frame:before{
+    top:-2px;
+    left:-2px;
+    border-top:5px solid var(--cyan);
+    border-left:5px solid var(--pink);
+    border-radius:12px 0 0 0;
+}
+
+.frame:after{
+    right:-2px;
+    bottom:-2px;
+    border-right:5px solid var(--yellow);
+    border-bottom:5px solid var(--purple);
+    border-radius:0 0 12px 0;
+}
+
+
+/* =========================================================
+   SLIDES
+========================================================= */
+
+.slide{
+    display:none;
+
+    position:relative;
+    z-index:20;
+
+    width:100%;
+    height:100vh;
+
+    padding:30px;
+
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    text-align:center;
+
+    animation:slideIn .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.slide.active{
+    display:flex;
+}
+
+@keyframes slideIn{
+
+    0%{
+        opacity:0;
+        transform:
+            scale(.8)
+            rotate(-2deg);
+        filter:blur(12px);
+    }
+
+    70%{
+        transform:
+            scale(1.03)
+            rotate(.5deg);
+    }
+
+    100%{
+        opacity:1;
+        transform:
+            scale(1)
+            rotate(0);
+        filter:blur(0);
+    }
+}
+
+
+/* =========================================================
+   GLASS CARD
+========================================================= */
+
+.glass{
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.08),
+            rgba(128,0,47,.13),
+            rgba(0,0,0,.6)
+        );
+
+    border:1px solid rgba(255,255,255,.18);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.6),
+        inset 0 0 30px rgba(255,79,163,.04);
+}
+
+
+/* =========================================================
+   PLAYFUL BADGES
+========================================================= */
+
+.badge{
+    display:inline-block;
+
+    padding:7px 16px;
+
+    border-radius:100px;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    margin-bottom:15px;
+
+    border:1px solid rgba(255,255,255,.3);
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,22,135,.25),
+            rgba(156,92,255,.25)
+        );
+
+    animation:badgePulse 2s infinite;
+}
+
+@keyframes badgePulse{
+    0%,100%{
+        box-shadow:0 0 0 rgba(255,79,163,0);
+    }
+
+    50%{
+        box-shadow:
+            0 0 20px rgba(255,79,163,.35);
+    }
+}
+
+
+/* =========================================================
+   SLIDE 1
+========================================================= */
+
+.password-card{
+    position:relative;
+
+    width:min(470px,94%);
+
+    padding:55px 30px 40px;
+
+    border-radius:35px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(92,0,32,.45),
+            rgba(8,3,8,.88)
+        );
+
+    border:
+        2px solid rgba(255,79,163,.45);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.8),
+        0 0 50px rgba(128,0,47,.4),
+        inset 0 0 35px rgba(255,79,163,.05);
+}
+
+.password-card:before{
+    content:"";
+
+    position:absolute;
+
+    width:200%;
+    height:100%;
+
+    left:-150%;
+    top:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.08),
+            transparent
+        );
+
+    transform:skewX(-20deg);
+
+    animation:shine 4s infinite;
+}
+
+@keyframes shine{
+    0%{left:-150%;}
+    50%,100%{left:150%;}
+}
+
+.password-card h1{
+    position:relative;
+
+    font-family:'Dancing Script',cursive;
+
+    font-size:clamp(3.5rem,10vw,5.5rem);
+
+    line-height:.9;
+
+    margin-bottom:15px;
+
+    color:white;
+
+    text-shadow:
+        0 0 10px rgba(255,79,163,.4),
+        0 0 35px rgba(128,0,47,.6);
+
+    animation:titleWiggle 4s infinite ease-in-out;
+}
+
+.password-card h1 span{
+    color:var(--pink);
+}
+
+@keyframes titleWiggle{
+
+    0%,100%{
+        transform:rotate(-1deg);
+    }
+
+    50%{
+        transform:rotate(1deg) scale(1.02);
+    }
+}
+
+.cute-line{
+    color:#e9dfe5;
+    line-height:1.6;
+    font-size:1rem;
+    margin-bottom:18px;
+}
+
+.hints{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:7px;
+
+    margin:18px 0 24px;
+}
+
+.hint{
+    padding:7px 11px;
+
+    border-radius:12px;
+
+    font-size:.75rem;
+    font-weight:600;
+
+    background:rgba(255,255,255,.07);
+
+    border:1px solid rgba(255,255,255,.13);
+
+    animation:hintBounce 3s infinite;
+}
+
+.hint:nth-child(1){
+    color:var(--pink);
+}
+
+.hint:nth-child(2){
+    color:var(--cyan);
+    animation-delay:.3s;
+}
+
+.hint:nth-child(3){
+    color:var(--yellow);
+    animation-delay:.6s;
+}
+
+.hint:nth-child(4){
+    color:var(--mint);
+    animation-delay:.9s;
+}
+
+@keyframes hintBounce{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-5px) rotate(-2deg);
+    }
+}
+
+.password-input{
+    width:85%;
+
+    padding:15px 18px;
+
+    border-radius:18px;
+
+    border:2px solid var(--burgundy2);
+
+    outline:none;
+
+    color:white;
+
+    background:rgba(0,0,0,.65);
+
+    font-family:'Fredoka',sans-serif;
+
+    font-size:1.2rem;
+
+    text-align:center;
+
+    letter-spacing:5px;
+
+    transition:.3s;
+}
+
+.password-input::placeholder{
+    color:#746b71;
+    letter-spacing:1px;
+}
+
+.password-input:focus{
+    border-color:var(--pink);
+
+    box-shadow:
+        0 0 20px rgba(255,79,163,.25);
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.fun-button{
+    position:relative;
+
+    margin-top:18px;
+
+    padding:14px 25px;
+
+    border:none;
+
+    border-radius:100px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-family:'Fredoka',sans-serif;
+
+    font-size:1rem;
+
+    font-weight:700;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--burgundy2),
+            var(--pink),
+            var(--purple)
+        );
+
+    background-size:200% 200%;
+
+    animation:
+        gradientButton 3s infinite,
+        buttonFloat 2s infinite ease-in-out;
+
+    box-shadow:
+        0 10px 30px rgba(255,22,135,.25);
+
+    transition:.3s;
+}
+
+@keyframes gradientButton{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+@keyframes buttonFloat{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-4px);}
+}
+
+.fun-button:hover{
+    transform:scale(1.08) rotate(-1deg);
+    box-shadow:
+        0 15px 40px rgba(255,22,135,.45);
+}
+
+#error-msg{
+    display:none;
+
+    margin-top:15px;
+
+    color:#ff7db9;
+
+    font-weight:600;
+
+    animation:errorShake .4s;
+}
+
+@keyframes errorShake{
+    0%,100%{transform:translateX(0);}
+    25%{transform:translateX(-8px) rotate(-2deg);}
+    75%{transform:translateX(8px) rotate(2deg);}
+}
+
+
+/* =========================================================
+   SLIDE 2
+========================================================= */
+
+.gallery-wrapper{
+    width:100%;
+    height:100%;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+}
+
+.gallery-title{
+    font-family:'Dancing Script',cursive;
+
+    font-size:clamp(3rem,7vw,5rem);
+
+    margin-top:4px;
+
+    color:white;
+
+    text-shadow:
+        0 0 15px rgba(255,79,163,.4);
+}
+
+.gallery-title span{
+    color:var(--pink);
+}
+
+.gallery-subtitle{
+    color:#d8cdd2;
+    margin-top:4px;
+}
+
+.gallery{
+    width:100%;
+    max-width:1200px;
+
+    flex:1;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,minmax(150px,1fr));
+
+    align-content:center;
+
+    gap:18px;
+
+    padding:20px;
+
+    overflow:auto;
+}
+
+.gallery::-webkit-scrollbar{
+    width:5px;
+}
+
+.gallery::-webkit-scrollbar-thumb{
+    background:linear-gradient(
+        var(--pink),
+        var(--purple)
+    );
+
+    border-radius:20px;
+}
+
+
+/* =========================================================
+   PHOTO CARDS
+========================================================= */
+
+.photo-card{
+    position:relative;
+
+    padding:8px;
+
+    border-radius:24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.13),
+            rgba(92,0,32,.35),
+            rgba(0,0,0,.75)
+        );
+
+    border:1px solid rgba(255,255,255,.2);
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.5);
+
+    transform:rotate(var(--rotation));
+
+    transition:.45s cubic-bezier(.2,.8,.2,1);
+
+    animation:cardDance 5s infinite ease-in-out;
+}
+
+.photo-card:nth-child(1){--rotation:-2deg;}
+.photo-card:nth-child(2){--rotation:2deg;animation-delay:.3s;}
+.photo-card:nth-child(3){--rotation:-1deg;animation-delay:.6s;}
+.photo-card:nth-child(4){--rotation:2deg;animation-delay:.9s;}
+.photo-card:nth-child(5){--rotation:-2deg;animation-delay:1.2s;}
+.photo-card:nth-child(6){--rotation:1deg;animation-delay:1.5s;}
+.photo-card:nth-child(7){--rotation:-1deg;animation-delay:1.8s;}
+
+@keyframes cardDance{
+    0%,100%{
+        transform:
+            rotate(var(--rotation))
+            translateY(0);
+    }
+
+    50%{
+        transform:
+            rotate(calc(var(--rotation) * -1))
+            translateY(-8px);
+    }
+}
+
+.photo-card:hover{
+    z-index:50;
+
+    transform:
+        rotate(0deg)
+        translateY(-15px)
+        scale(1.08);
+
+    border-color:var(--pink);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.8),
+        0 0 30px rgba(255,22,135,.35);
+}
+
+.photo-card img{
+    display:block;
+
+    width:100%;
+    height:170px;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    transition:.5s;
+
+    filter:
+        saturate(.9)
+        contrast(1.05);
+}
+
+.photo-card:hover img{
+    transform:scale(1.04);
+    filter:saturate(1.2);
+}
+
+.photo-card:after{
+    content:"✨";
+
+    position:absolute;
+
+    right:-8px;
+    top:-15px;
+
+    font-size:28px;
+
+    animation:starSpin 3s infinite;
+}
+
+@keyframes starSpin{
+    0%,100%{
+        transform:rotate(0) scale(1);
+    }
+
+    50%{
+        transform:rotate(25deg) scale(1.3);
+    }
+}
+
+.compliment{
+    padding:9px 4px 3px;
+
+    font-family:'Dancing Script',cursive;
+
+    font-size:1.35rem;
+
+    color:var(--yellow);
+}
+
+.photo-card:nth-child(2) .compliment{
+    color:var(--pink);
+}
+
+.photo-card:nth-child(3) .compliment{
+    color:var(--cyan);
+}
+
+.photo-card:nth-child(4) .compliment{
+    color:var(--mint);
+}
+
+.photo-card:nth-child(5) .compliment{
+    color:var(--purple);
+}
+
+.photo-card:nth-child(6) .compliment{
+    color:var(--orange);
+}
+
+.photo-card:nth-child(7) .compliment{
+    color:var(--pink);
+}
+
+
+/* =========================================================
+   SLIDE 3
+========================================================= */
+
+.cake-title{
+    font-family:'Dancing Script',cursive;
+
+    font-size:clamp(3.3rem,8vw,5.5rem);
+
+    color:white;
+
+    text-shadow:
+        0 0 20px rgba(255,22,135,.5);
+}
+
+.cake-title span{
+    color:var(--pink);
+}
+
+.cake-subtitle{
+    color:#d8ccd2;
+    margin-top:4px;
+}
+
+.cake-container{
+    position:relative;
+
+    margin-top:80px;
+
+    width:330px;
+    height:190px;
+
+    transition:.5s;
+
+    filter:
+        drop-shadow(0 20px 30px rgba(0,0,0,.7));
+}
+
+.cake-glow{
+    position:absolute;
+
+    width:320px;
+    height:100px;
+
+    bottom:-20px;
+    left:5px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(255,22,135,.5),
+            rgba(128,0,47,.15),
+            transparent 70%
+        );
+
+    filter:blur(20px);
+
+    animation:cakeGlow 2s infinite alternate;
+}
+
+@keyframes cakeGlow{
+    from{transform:scale(.9);opacity:.5;}
+    to{transform:scale(1.15);opacity:1;}
+}
+
+.plate{
+    position:absolute;
+
+    width:340px;
+    height:28px;
+
+    left:-5px;
+    bottom:5px;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            #333,
+            #090909
+        );
+
+    border:2px solid var(--pink);
+
+    box-shadow:
+        0 0 20px rgba(255,79,163,.35);
+}
+
+.cake-bottom{
+    position:absolute;
+
+    width:260px;
+    height:105px;
+
+    left:35px;
+    bottom:30px;
+
+    border-radius:18px 18px 10px 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #65001e,
+            #9b1247,
+            #450014
+        );
+
+    border:
+        3px solid var(--pink);
+
+    box-shadow:
+        inset 0 -25px rgba(0,0,0,.2),
+        0 10px 25px rgba(0,0,0,.6);
+}
+
+.cake-bottom:before{
+    content:"🍓   ✦   🍓   ✦   🍓";
+
+    position:absolute;
+
+    width:100%;
+
+    bottom:22px;
+
+    left:0;
+
+    font-size:18px;
+}
+
+.cake{
+    position:absolute;
+
+    width:220px;
+    height:85px;
+
+    left:17px;
+    top:-78px;
+
+    border-radius:18px 18px 8px 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4f9a,
+            #8d0b3c,
+            #4a0017
+        );
+
+    border:
+        3px solid var(--yellow);
+
+    box-shadow:
+        0 8px 15px rgba(0,0,0,.5);
+}
+
+.cake:before{
+    content:"🎀";
+
+    position:absolute;
+
+    top:22px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    font-size:35px;
+
+    animation:bowBounce 1.5s infinite;
+}
+
+@keyframes bowBounce{
+    0%,100%{transform:translateX(-50%) rotate(-5deg);}
+    50%{transform:translateX(-50%) rotate(5deg) scale(1.1);}
+}
+
+
+/* =========================================================
+   CANDLE
+========================================================= */
+
+.candle{
+    position:absolute;
+
+    width:16px;
+    height:65px;
+
+    left:50%;
+    top:-65px;
+
+    transform:translateX(-50%);
+
+    border-radius:5px;
+
+    background:
+        repeating-linear-gradient(
+            45deg,
+            var(--cyan) 0 8px,
+            white 8px 15px
+        );
+
+    border:2px solid white;
+}
+
+.flame{
+    position:absolute;
+
+    width:28px;
+    height:42px;
+
+    left:-8px;
+    top:-40px;
+
+    border-radius:
+        50%
+        50%
+        50%
+        50%;
+
+    background:
+        radial-gradient(
+            ellipse at center bottom,
+            white 0%,
+            var(--yellow) 25%,
+            var(--orange) 55%,
+            transparent 70%
+        );
+
+    filter:
+        drop-shadow(0 0 8px var(--yellow))
+        drop-shadow(0 0 25px var(--orange));
+
+    animation:flameDance .25s infinite alternate;
+}
+
+@keyframes flameDance{
+    from{
+        transform:
+            rotate(-7deg)
+            scale(.9);
+    }
+
+    to{
+        transform:
+            rotate(7deg)
+            scale(1.15);
+    }
+}
+
+.blown-out{
+    opacity:0 !important;
+    filter:none !important;
+}
+
+#funny-cake-msg{
+    display:none;
+
+    margin-top:28px;
+
+    color:var(--yellow);
+
+    font-family:'Dancing Script',cursive;
+
+    font-size:1.8rem;
+
+    animation:popMessage .5s;
+}
+
+@keyframes popMessage{
+    from{
+        transform:scale(.5) rotate(-8deg);
+        opacity:0;
+    }
+
+    to{
+        transform:scale(1) rotate(0);
+        opacity:1;
+    }
+}
+
+.knife{
+    display:none;
+
+    margin-top:25px;
+
+    padding:13px 24px;
+
+    border-radius:100px;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--burgundy2),
+            var(--pink)
+        );
+
+    cursor:pointer;
+
+    font-weight:700;
+
+    animation:knifeBounce 1s infinite;
+}
+
+@keyframes knifeBounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-7px) rotate(-2deg);}
+}
+
+
+/* =========================================================
+   SLIDE 4
+========================================================= */
+
+.final-card{
+    position:relative;
+
+    width:min(760px,94%);
+
+    padding:55px 30px;
+
+    border-radius:40px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(128,0,47,.4),
+            rgba(10,3,8,.85)
+        );
+
+    border:
+        2px solid rgba(255,79,163,.4);
+
+    box-shadow:
+        0 30px 100px rgba(0,0,0,.75),
+        0 0 60px rgba(128,0,47,.4);
+}
+
+.final-card:before{
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    left:-250px;
+    top:-300px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,79,163,.18),
+            transparent 65%
+        );
+
+    animation:orbSpin 8s infinite linear;
+}
+
+@keyframes orbSpin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+.final-card h1{
+    position:relative;
+
+    font-family:'Dancing Script',cursive;
+
+    font-size:clamp(3.5rem,8vw,6rem);
+
+    line-height:1;
+
+    color:white;
+}
+
+.final-card h1 span{
+    color:var(--pink);
+}
+
+.final-card .line{
+    width:180px;
+    height:4px;
+
+    margin:18px auto;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--cyan),
+            var(--pink),
+            var(--yellow),
+            var(--purple)
+        );
+
+    animation:lineRainbow 3s infinite linear;
+}
+
+@keyframes lineRainbow{
+    0%{filter:hue-rotate(0deg);}
+    100%{filter:hue-rotate(360deg);}
+}
+
+.final-card p{
+    position:relative;
+
+    max-width:600px;
+
+    margin:14px auto;
+
+    color:#ded3d8;
+
+    line-height:1.7;
+
+    font-size:1.05rem;
+}
+
+.final-card h2{
+    position:relative;
+
+    margin-top:22px;
+
+    font-family:'Dancing Script',cursive;
+
+    color:var(--yellow);
+
+    font-size:2.7rem;
+}
+
+.signature{
+    font-family:'Dancing Script',cursive !important;
+
+    color:var(--pink) !important;
+
+    font-size:2rem !important;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:100;
+
+    background:rgba(2,0,4,.85);
+
+    backdrop-filter:blur(12px);
+
+    animation:modalFade .3s;
+}
+
+.modal-content{
+    position:relative;
+
+    width:min(500px,90%);
+
+    margin:15vh auto;
+
+    padding:35px 28px;
+
+    border-radius:30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #250817,
+            #090308
+        );
+
+    border:2px solid var(--pink);
+
+    box-shadow:
+        0 0 60px rgba(255,22,135,.3);
+
+    animation:modalPop .5s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes modalFade{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+@keyframes modalPop{
+    from{
+        transform:
+            scale(.6)
+            rotate(-5deg);
+        opacity:0;
+    }
+
+    to{
+        transform:
+            scale(1)
+            rotate(0);
+        opacity:1;
+    }
+}
+
+.modal-content h2{
+    font-family:'Dancing Script',cursive;
+
+    color:var(--pink);
+
+    font-size:2.8rem;
+
+    margin-bottom:15px;
+}
+
+.modal-content p{
+    color:#ddd2d8;
+    line-height:1.7;
+}
+
+.close{
+    position:absolute;
+
+    top:12px;
+    right:18px;
+
+    font-size:30px;
+
+    color:#aaa;
+
+    cursor:pointer;
+}
+
+.close:hover{
+    color:var(--pink);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:850px){
+
+    .gallery{
+        grid-template-columns:
+            repeat(3,minmax(130px,1fr));
+
+        gap:12px;
+    }
+
+    .photo-card img{
+        height:145px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .slide{
+        padding:20px 12px;
+    }
+
+    .frame{
+        inset:6px;
+    }
+
+    .sticker.s1{
+        left:2%;
+        font-size:30px;
+    }
+
+    .sticker.s2{
+        right:2%;
+        font-size:28px;
+    }
+
+    .sticker.s3,
+    .sticker.s4{
+        font-size:30px;
+    }
+
+    .password-card{
+        padding:45px 18px 30px;
+    }
+
+    .gallery{
+        grid-template-columns:
+            repeat(2,minmax(120px,1fr));
+
+        padding:10px 5px;
+
+        gap:10px;
+    }
+
+    .photo-card img{
+        height:150px;
+    }
+
+    .compliment{
+        font-size:1.1rem;
+    }
+
+    .gallery-title{
+        font-size:3rem;
+    }
+
+    .cake-container{
+        transform:scale(.82);
+        margin-top:55px;
+    }
+
+    .final-card{
+        padding:45px 20px;
+    }
+
+    .final-card h2{
+        font-size:2.2rem;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     BACKGROUND
+========================================================= -->
+
+<div class="background">
+
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="blob three"></div>
+
+</div>
+
+
+<div id="particles"></div>
+
+
+<!-- Cute stickers -->
+
+<div class="sticker s1">🎀</div>
+<div class="sticker s2">🦋</div>
+<div class="sticker s3">🍒</div>
+<div class="sticker s4">🧸</div>
+<div class="sticker s5">✦</div>
+<div class="sticker s6">💗</div>
+
+
+<div class="frame"></div>
+
+
+<!-- =========================================================
+     SLIDE 1
+========================================================= -->
+
+<section
+    id="slide1"
+    class="slide active"
+>
+
+    <div class="password-card">
+
+        <div class="badge">
+            🚨 TOP SECRET 🚨
+        </div>
+
+        <h1>
+            Oiii
+            <span>Vini!</span>
+        </h1>
+
+        <p class="cute-line">
+
+            Someone has locked a suspiciously
+            cute little surprise in here. 👀
+
+            <br>
+
+            Unfortunately, the security guard
+            is me... and I'm terrible at my job. 😂
+
+        </p>
+
+
+        <div class="hints">
+
+            <div class="hint">
+                🤫 Secret numbers
+            </div>
+
+            <div class="hint">
+                🧠 Use your brain
+            </div>
+
+            <div class="hint">
+                📅 Think important
+            </div>
+
+            <div class="hint">
+                😂 Don't panic
+            </div>
+
+        </div>
+
+
+        <p class="cute-line">
+
+            <b style="color:#ff4fa3;">
+                Tiny hint:
+            </b>
+
+            It's a date that has
+            something to do with
+            <b style="color:#ffe66d;">
+                YOU.
+            </b>
+
+            😌
+
+            <br><br>
+
+            And no, I'm not telling you
+            anything else. Nice try. 😭
+
+        </p>
+
+
+        <input
+            id="passwordInput"
+            class="password-input"
+            type="password"
+            maxlength="8"
+            placeholder="••••••••"
+        >
+
+
+        <br>
+
+
+        <button
+            class="fun-button"
+            onclick="checkPassword()"
+        >
+            🔓 UNLOCK THE CHAOS
+        </button>
+
+
+        <p id="error-msg"></p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SLIDE 2
+========================================================= -->
+
+<section
+    id="slide2"
+    class="slide"
+>
+
+    <div class="gallery-wrapper">
+
+        <div>
+
+            <div class="badge">
+                📸 EVIDENCE ARCHIVE
+            </div>
+
+            <h1 class="gallery-title">
+                Vini.exe
+                <span>✨</span>
+            </h1>
+
+            <p class="gallery-subtitle">
+                Proof that you are simultaneously
+                cute, chaotic and slightly suspicious.
+            </p>
+
+        </div>
+
+
+        <div class="gallery">
+
+
+            <div class="photo-card">
+
+                <img
+                    src="photo1.jpg"
+                    alt="Vini"
+                >
+
+                <div class="compliment">
+                    Absolutely ✨ STUNNING
+                </div>
+
+            </div>
+
+
+            <div class="photo-card">
+
+                <img
+                    src="photo2.jpg"
+                    alt="Vini"
+                >
+
+                <div class="compliment">
+                    Professional Cutie 🎀
+                </div>
+
+            </div>
+
+
+            <div class="photo-card">
+
+                <img
+                    src="photo3.jpg"
+                    alt="Vini"
+                >
+
+                <div class="compliment">
+                    Main Character 👑
+                </div>
+
+            </div>
+
+
+            <div class="photo-card">
+
+                <img
+                    src="photo4.jpg"
+                    alt="Vini"
+                >
+
+                <div class="compliment">
+                    Took 47 Business Days 😂
+                </div>
+
+            </div>
+
+
+            <div class="photo-card">
+
+                <img
+                    src="photo5.jpg"
+                    alt="Vini"
+                >
+
+                <div class="compliment">
+                    Certified Pretty 🦋
+                </div>
+
+            </div>
+
+
+            <div class="photo-card">
+
+                <img
+                    src="photo6.jpg"
+                    alt="Vini"
+                >
+
+                <div class="compliment">
+                    Queen of Vibes 🍒
+                </div>
+
+            </div>
+
+
+            <div class="photo-card">
+
+                <img
+                    src="photo7.jpg"
+                    alt="Vini"
+                >
+
+                <div class="compliment">
+                    Cutest Weirdo 🧸
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="fun-button"
+            onclick="nextSlide(3)"
+        >
+            🎂 OKAY NOW COME SEE THE CAKE
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SLIDE 3
+========================================================= -->
+
+<section
+    id="slide3"
+    class="slide"
+>
+
+    <div class="badge">
+        🎂 EXTREMELY SERIOUS CAKE TECHNOLOGY
+    </div>
+
+
+    <h1 class="cake-title">
+        Make A Wish,
+        <span>Vini!</span>
+    </h1>
+
+
+    <p class="cake-subtitle">
+        Blow into your microphone.
+        Don't accidentally blow the laptop away. 💀
+    </p>
+
+
+    <button
+        id="micBtn"
+        class="fun-button"
+        onclick="startMic()"
+    >
+        🎤 ACTIVATE THE CAKE
+    </button>
+
+
+    <div
+        id="cakeArea"
+        class="cake-container"
+        style="
+            opacity:.25;
+            pointer-events:none;
+        "
+    >
+
+        <div class="cake-glow"></div>
+
+
+        <div class="cake-bottom">
+
+            <div class="cake">
+
+                <div class="candle">
+
+                    <div
+                        id="flame1"
+                        class="flame"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="plate"></div>
+
+    </div>
+
+
+    <p id="funny-cake-msg">
+        💀 THE CANDLE HAS ENTERED DEFENCE MODE.
+    </p>
+
+
+    <div
+        id="knife"
+        class="knife"
+        onclick="cutCake()"
+    >
+        🔪 FINE. CUT THE CAKE.
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     SLIDE 4
+========================================================= -->
+
+<section
+    id="slide4"
+    class="slide"
+>
+
+    <div class="final-card">
+
+        <div class="badge">
+            🎉 MISSION COMPLETE
+        </div>
+
+
+        <h1>
+            Happy Birthday,
+            <span>Vini!</span>
+        </h1>
+
+
+        <div class="line"></div>
+
+
+        <p>
+
+            You have officially survived
+            the secret website. 😂
+
+            <br><br>
+
+            I hope this year gives you
+            ridiculous amounts of happiness,
+            amazing memories, good people,
+            lots of laughter and absolutely
+            zero boring days.
+
+        </p>
+
+
+        <p>
+
+            Stay weird.
+
+            Stay funny.
+
+            Keep being yourself.
+
+            And please don't become
+            too normal. That's boring. 😭
+
+        </p>
+
+
+        <h2>
+            Keep Being Awesome ✨
+        </h2>
+
+
+        <p class="signature">
+            — Alexx 🖤
+        </p>
+
+
+        <button
+            class="fun-button"
+            onclick="showRealGift()"
+        >
+            🎁 CLAIM YOUR USELESS PRESENT
+        </button>
+
+
+        <br>
+
+
+        <button
+            class="fun-button"
+            onclick="showJoke()"
+        >
+            😂 ONE LAST THING...
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     MODAL
+========================================================= -->
+
+<div
+    id="jokeModal"
+    class="modal"
+>
+
+    <div class="modal-content">
+
+        <span
+            class="close"
+            onclick="closeJoke()"
+        >
+            ×
+        </span>
+
+
+        <h2>
+            Important Announcement 🚨
+        </h2>
+
+
+        <p>
+
+            After extensive scientific research,
+            Alexx has concluded that you are:
+
+            <br><br>
+
+            🎀 37% cute
+
+            <br>
+
+            😂 42% chaotic
+
+            <br>
+
+            🧠 8% responsible
+
+            <br>
+
+            🍕 13% probably thinking about food
+
+            <br><br>
+
+            Total:
+
+            <b style="color:#ff4fa3;">
+                100% Vini.
+            </b>
+
+            😭🖤
+
+            <br><br>
+
+            Happy Birthday, legend. 🎉
+
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+const particleContainer =
+    document.getElementById("particles");
+
+const particleSymbols = [
+    "✦",
+    "✧",
+    "♡",
+    "⋆",
+    "·",
+    "✿",
+    "✨",
+    "♥"
+];
+
+for(let i=0;i<80;i++){
+
+    const p =
+        document.createElement("div");
+
+    p.className="particle";
+
+    p.innerText =
+        particleSymbols[
+            Math.floor(
+                Math.random() *
+                particleSymbols.length
+            )
+        ];
+
+    p.style.left =
+        Math.random()*100+"%";
+
+    p.style.fontSize =
+        (8 + Math.random()*18)+"px";
+
+    p.style.animationDuration =
+        (5 + Math.random()*10)+"s";
+
+    p.style.animationDelay =
+        Math.random()*10+"s";
+
+    p.style.color =
+        [
+            "#ff4fa3",
+            "#9c5cff",
+            "#54e8ff",
+            "#ffe66d",
+            "#74ffd3",
+            "#ffffff"
+        ][
+            Math.floor(
+                Math.random()*6
+            )
+        ];
+
+    particleContainer.appendChild(p);
+
+}
+
+
+/* =========================================================
+   SLIDES
+========================================================= */
+
+function nextSlide(number){
+
+    document
+        .querySelectorAll(".slide")
+        .forEach(slide=>{
+            slide.classList.remove("active");
+        });
+
+    document
+        .getElementById("slide"+number)
+        .classList.add("active");
+
+}
+
+
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+const funnyHints = [
+
+    "WRONG 😭 Even the website is disappointed.",
+
+    "Nope. Your brain needs a software update. 🧠😂",
+
+    "Try again, detective. 🕵️‍♀️",
+
+    "Close... but your password has escaped. 💀",
+
+    "The secret numbers are literally about YOU. 👀",
+
+    "Hint: Think of an important date. 📅",
+
+    "Vini.exe has stopped thinking. Restart brain. 😂"
+
+];
+
+
+function checkPassword(){
+
+    const input =
+        document
+        .getElementById("passwordInput");
+
+    const error =
+        document
+        .getElementById("error-msg");
+
+
+    if(input.value === "15082009"){
+
+        nextSlide(2);
+
+        triggerConfetti(true);
+
+    }
+
+    else{
+
+        error.style.display="block";
+
+        error.innerText =
+            funnyHints[
+                Math.floor(
+                    Math.random() *
+                    funnyHints.length
+                )
+            ];
+
+        error.style.animation="none";
+
+        void error.offsetWidth;
+
+        error.style.animation=
+            "errorShake .4s";
+
+    }
+
+}
+
+
+/* ENTER KEY */
+
+document
+    .getElementById("passwordInput")
+    .addEventListener(
+        "keydown",
+        function(e){
+
+            if(e.key==="Enter"){
+                checkPassword();
+            }
+
+        }
+    );
+
+
+/* =========================================================
+   MICROPHONE
+========================================================= */
+
+let audioContext;
+let analyser;
+let microphone;
+
+let blowCount=0;
+let isBlownOut=false;
+let cooldown=false;
+
+
+async function startMic(){
+
+    try{
+
+        const stream =
+            await navigator
+            .mediaDevices
+            .getUserMedia({
+                audio:true
+            });
+
+
+        audioContext =
+            new (
+                window.AudioContext ||
+                window.webkitAudioContext
+            )();
+
+
+        analyser =
+            audioContext
+            .createAnalyser();
+
+
+        microphone =
+            audioContext
+            .createMediaStreamSource(
+                stream
+            );
+
+
+        microphone.connect(analyser);
+
+        analyser.fftSize=256;
+
+
+        document
+            .getElementById("micBtn")
+            .style.display="none";
+
+
+        const cake =
+            document
+            .getElementById("cakeArea");
+
+
+        cake.style.opacity="1";
+        cake.style.pointerEvents="auto";
+
+
+        checkAudioLevel();
+
+    }
+
+    catch(err){
+
+        alert(
+            "🎤 Please allow microphone access so you can blow the candle!"
+        );
+
+        console.error(err);
+
+    }
+
+}
+
+
+/* =========================================================
+   AUDIO
+========================================================= */
+
+function checkAudioLevel(){
+
+    if(isBlownOut)
+        return;
+
+
+    const bufferLength =
+        analyser.frequencyBinCount;
+
+
+    const dataArray =
+        new Uint8Array(
+            bufferLength
+        );
+
+
+    analyser.getByteFrequencyData(
+        dataArray
+    );
+
+
+    let sum=0;
+
+
+    for(let i=0;i<bufferLength;i++){
+
+        sum+=dataArray[i];
+
+    }
+
+
+    const average =
+        sum/bufferLength;
+
+
+    if(
+        average>60 &&
+        !cooldown
+    ){
+
+        blowOutCandles();
+
+    }
+
+    else{
+
+        requestAnimationFrame(
+            checkAudioLevel
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CANDLE
+========================================================= */
+
+function blowOutCandles(){
+
+    blowCount++;
+
+    cooldown=true;
+
+
+    if(blowCount===1){
+
+        document
+            .getElementById("flame1")
+            .classList
+            .add("blown-out");
+
+
+        document
+            .getElementById("funny-cake-msg")
+            .style.display="block";
+
+
+        document
+            .getElementById("funny-cake-msg")
+            .innerText =
+            "HAHA! TRICK CANDLE. 😂 BLOW AGAIN.";
+
+
+        setTimeout(()=>{
+
+            document
+                .getElementById("flame1")
+                .classList
+                .remove("blown-out");
+
+
+            cooldown=false;
+
+            requestAnimationFrame(
+                checkAudioLevel
+            );
+
+        },1500);
+
+    }
+
+    else{
+
+        isBlownOut=true;
+
+
+        document
+            .getElementById("flame1")
+            .classList
+            .add("blown-out");
+
+
+        document
+            .getElementById("funny-cake-msg")
+            .innerText =
+            "OKAY OKAY 😭 YOU WIN! 🎉";
+
+
+        triggerConfetti(true);
+
+
+        setTimeout(()=>{
+
+            document
+                .getElementById("knife")
+                .style.display="inline-block";
+
+        },1000);
+
+    }
+
+}
+
+
+/* =========================================================
+   CUT CAKE
+========================================================= */
+
+function cutCake(){
+
+    triggerConfetti(true);
+
+
+    const cake =
+        document
+        .getElementById("cakeArea");
+
+
+    cake.style.transform=
+        "scale(1.2) rotate(3deg)";
+
+
+    setTimeout(()=>{
+
+        nextSlide(4);
+
+        continuousConfetti();
+
+    },900);
+
+}
+
+
+/* =========================================================
+   FINAL BUTTON
+========================================================= */
+
+function showRealGift(){
+
+    alert(
+        "🎁 Congratulations! Your present is... absolutely nothing. 😂\n\nBut Alexx did make you an entire website, so that's worth at least 3 imaginary chocolates. 🍫🖤"
+    );
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+function showJoke(){
+
+    document
+        .getElementById("jokeModal")
+        .style.display="block";
+
+}
+
+
+function closeJoke(){
+
+    document
+        .getElementById("jokeModal")
+        .style.display="none";
+
+}
+
+
+window.onclick=function(event){
+
+    const modal =
+        document
+        .getElementById("jokeModal");
+
+
+    if(event.target===modal){
+
+        modal.style.display="none";
+
+    }
+
+};
+
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+const confettiColors=[
+    "#80002f",
+    "#ff4fa3",
+    "#ff1687",
+    "#9c5cff",
+    "#54e8ff",
+    "#ffe66d",
+    "#74ffd3",
+    "#ffffff"
+];
+
+
+function triggerConfetti(heavy=false){
+
+    confetti({
+
+        particleCount:
+            heavy ? 250 : 130,
+
+        spread:110,
+
+        startVelocity:45,
+
+        gravity:.75,
+
+        scalar:1.1,
+
+        colors:confettiColors,
+
+        origin:{
+            x:.5,
+            y:.55
+        }
+
+    });
+
+
+    setTimeout(()=>{
+
+        confetti({
+
+            particleCount:100,
+
+            spread:100,
+
+            colors:confettiColors,
+
+            origin:{
+                x:.05,
+                y:.7
+            }
+
+        });
+
+    },200);
+
+
+    setTimeout(()=>{
+
+        confetti({
+
+            particleCount:100,
+
+            spread:100,
+
+            colors:confettiColors,
+
+            origin:{
+                x:.95,
+                y:.7
+            }
+
+        });
+
+    },400);
+
+}
+
+
+/* =========================================================
+   CONTINUOUS CONFETTI
+========================================================= */
+
+function continuousConfetti(){
+
+    const duration=12000;
+
+    const end=
+        Date.now()+duration;
+
+
+    const interval=
+        setInterval(()=>{
+
+            if(Date.now()>end){
+
+                clearInterval(interval);
+
+                return;
+
+            }
+
+
+            confetti({
+
+                particleCount:25,
+
+                spread:80,
+
+                startVelocity:25,
+
+                colors:confettiColors,
+
+                origin:{
+                    x:Math.random(),
+                    y:-.1
+                }
+
+            });
+
+        },220);
+
+}
+
+</script>
+
+</body>
+</html>
